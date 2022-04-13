@@ -16,7 +16,7 @@
 
 ## Liens
 
-[Lien vers la page - GitHub](https://okuspo.github.io/)  
+[Lien vers la page - GitHub](https://okuspo.github.io/P4_GameOn_TS/)  
 [Lien vers la maquette - Figma](https://www.figma.com/file/prxFGnSUoEhk6PTcMaJQim/UI-Design-GameOn-EN)  
 [Lien vers le diagramme des évènements et des fonctions - Whimsical](https://whimsical.com/p4-gameon-JnY4Bf93Nx96scT1XrZ3vf)  
 [Lien vers le tableau de gestion de projet - Trello](https://trello.com/b/tRdXPinX/p4gameon)
