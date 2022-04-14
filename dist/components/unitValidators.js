@@ -20,10 +20,11 @@ function validateEmail (emailAddress, regex) {
   }
 }
 function validateBirthDate (birthdate) {
+  const minAge = 13
   return {
     id: 'birthDate',
-    valid: Math.abs(new Date().getTime() - new Date(birthdate).getTime()) / (1000 * 3600 * 24) > 365,
-    error: 'Vous devez avoir 1 an minimum pour participer.'
+    valid: Math.abs(new Date().getTime() - new Date(birthdate).getTime()) / (1000 * 3600 * 24) > (minAge * 365),
+    error: `Vous devez avoir ${minAge} ans minimum pour participer.`
   }
 }
 function validateOccurence (participationOccurence, regex) {
@@ -48,7 +49,6 @@ function validateTerms (termsCheckbox) {
   }
 }
 function checkStringLength (string) {
-  if (string) { return string.length > 1 }
-  return false
+  return string.length > 1
 }
 export { validateFirstName, validateLastName, validateEmail, validateBirthDate, validateCity, validateOccurence, validateTerms }
