@@ -1,15 +1,15 @@
-import { IValidationReturn, validateFirstName, validateLastName, validateEmail, validateBirthDate, validateCity, validateOccurence, validateTerms } from './unitValidators.js'
+import { IUValidatorOutput, validateFirstName, validateLastName, validateEmail, validateBirthDate, validateCity, validateOccurence, validateTerms } from './unitValidators.js'
 const digitOnlyRegex: RegExp = /^([0-9]|[1-9][0-9])$/
 const emailFormatRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
 interface IGlobalValidatorOutput {
   valid: boolean,
-  invalidInputs: string[]
-  validInputs: string[]
+  invalidInputs: IUValidatorOutput[]
+  validInputs: IUValidatorOutput[]
 }
 
-export function globalValidator (form: FormData): IGlobalValidatorOutput {
-  // Extract user inputs
+function globalValidator (form: FormData): IGlobalValidatorOutput {
+  // Get user inputs
   const firstName = form.get('firstName')!.toString()
   const lastName = form.get('lastName')!.toString()
   const emailAddress = form.get('emailAddress')!.toString()
@@ -19,7 +19,7 @@ export function globalValidator (form: FormData): IGlobalValidatorOutput {
   const termsCheckbox = form.get('checkboxTCU')
 
   // Asserts each input and stores the result objects
-  const validationBatch: IValidationReturn[] = [
+  const validationBatch: IUValidatorOutput[] = [
     validateFirstName(firstName),
     validateLastName(lastName),
     validateEmail(emailAddress, emailFormatRegex),
@@ -31,18 +31,14 @@ export function globalValidator (form: FormData): IGlobalValidatorOutput {
 
   // Initialize the global validator output
   const globalValidatorOutput: IGlobalValidatorOutput = {
-    valid: true,
-    invalidInputs: [],
-    validInputs: []
+    valid: false,
+    invalidInputs: validationBatch.filter(input => !input.valid),
+    validInputs: validationBatch.filter(input => input.valid)
   }
 
-  // Populate the output
-  validationBatch.forEach(field => {
-    if (!field.valid) {
-      globalValidatorOutput.valid = false
-      globalValidatorOutput.invalidInputs.push(field.id)
-    } else globalValidatorOutput.validInputs.push(field.id)
-  })
+  if (globalValidatorOutput.invalidInputs.length === 0) globalValidatorOutput.valid = true
 
   return globalValidatorOutput
 }
+
+export default globalValidator

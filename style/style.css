@@ -8,6 +8,9 @@
   overflow: hidden;
   margin: 3.5%;
 }
+.topnav.icon {
+  display: none;
+}
 
 .header-logo {
   float: left;
@@ -28,7 +31,6 @@
   font-size: 20px;
   font-family: Roboto, sans-serif;
 }
-
 .topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
@@ -41,10 +43,6 @@
   border-radius: 15px;
 }
 
-.topnav .icon {
-  display: none;
-}
-
 @media screen and (max-width: 768px) {
   .topnav a {
     display: none;
@@ -54,18 +52,15 @@
     float: right;
     display: block;
   }
-}
-@media screen and (max-width: 768px) {
+
   .topnav.responsive {
     position: relative;
   }
-
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
     top: 0;
   }
-
   .topnav.responsive a {
     float: none;
     display: block;
@@ -76,7 +71,6 @@
   .topnav a {
     display: none;
   }
-
   .topnav a.icon {
     float: right;
     display: block;
@@ -268,26 +262,15 @@ main {
   padding-top: 10px;
 }
 
-@keyframes modalopen {
-  from {
-    opacity: 0;
-    transform: translateY(-150px);
-  }
-  to {
-    opacity: 1;
-  }
-}
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
 }
 
-/***************************** 2.1 Main modal ********************/
 #main-modal {
   display: none;
 }
 
-/**************************** 2.2 Confirmation modal **************/
 #confirmation-modal {
   display: none;
   height: 70vh;
@@ -298,6 +281,15 @@ main {
   text-align: center;
 }
 
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}
 .button {
   background: #fe142f;
   margin-top: 0.5em;
@@ -308,7 +300,6 @@ main {
   font-size: 16px;
   border: none;
 }
-
 .button:hover {
   background: #3876ac;
 }
@@ -373,7 +364,6 @@ main {
   border-radius: 1rem;
   cursor: pointer;
 }
-
 .modal-btn:hover {
   background: #3876ac;
 }

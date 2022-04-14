@@ -7,26 +7,27 @@ const formCloseBtn: HTMLSpanElement = document.getElementById('formClose')!
 const thanksCloseBtn: NodeList = document.querySelectorAll('.thanksClose')
 
 // FORM MODAL EVENTS
-modalBtn.forEach((btn) => btn.addEventListener('click', openFormModal))
-formCloseBtn.addEventListener('click', closeFormModal)
-thanksCloseBtn.forEach((btn) => btn.addEventListener('click', closeThanksModal))
+function addButtonsListeners () {
+  modalBtn.forEach((btn) => btn.addEventListener('click', () => {
+    modalbg.style.display = 'block'
+    formModal.style.display = 'block'
+  }))
 
-export function openFormModal () {
-  modalbg.style.display = 'block'
-  formModal.style.display = 'block'
+  formCloseBtn.addEventListener('click', closeFormModal)
+  thanksCloseBtn.forEach((btn) => btn.addEventListener('click', () => {
+    modalbg.style.display = 'none'
+    thanksModal.style.display = 'none'
+  }))
 }
 
-export function closeFormModal () {
+function closeFormModal () {
   modalbg.style.display = 'none'
   formModal.style.display = 'none'
 }
 
-export function openThanksModal () {
+function openThanksModal () {
   modalbg.style.display = 'block'
   thanksModal.style.display = 'flex'
 }
 
-export function closeThanksModal () {
-  modalbg.style.display = 'none'
-  thanksModal.style.display = 'none'
-}
+export { addButtonsListeners, closeFormModal, openThanksModal }
